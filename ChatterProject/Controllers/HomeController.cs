@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ChatterProject.Controllers
 {
+    [RequireHttps] //HAVE TO ADD IN THIS SPOT
     public class HomeController : Controller
     {
         public ActionResult Index()
