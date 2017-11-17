@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ChatterProject.Models.Chatter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div id="response"></div>
+<button id="getChats" class="btn btn-primary">Get Chats</button>
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ChatMsg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateStamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChatMsg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateStamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ChatterID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ChatterID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ChatterID })
+        </td>
+    </tr>
+}
+
+</table>*@

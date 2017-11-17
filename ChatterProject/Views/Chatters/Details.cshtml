@@ -1,0 +1,42 @@
+﻿@model ChatterProject.Models.Chatter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Chatter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ChatMsg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChatMsg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ChatterID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

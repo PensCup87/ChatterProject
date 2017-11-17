@@ -10,107 +10,112 @@ using ChatterProject.Models;
 
 namespace ChatterProject.Controllers
 {
-    public class ChatsController : Controller
+    public class ChattersController : Controller
     {
         private ChatterDatabaseEntities db = new ChatterDatabaseEntities();
 
-        // GET: Chats
+        // GET: Chatters
         public ActionResult Index()
         {
-            return View(db.Chats.ToList());
+            var chatters = db.Chatters.Include(c => c.AspNetUser);
+            return View(chatters.ToList());
         }
 
-        // GET: Chats/Details/5
+        // GET: Chatters/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chat chat = db.Chats.Find(id);
-            if (chat == null)
+            Chatter chatter = db.Chatters.Find(id);
+            if (chatter == null)
             {
                 return HttpNotFound();
             }
-            return View(chat);
+            return View(chatter);
         }
 
-        // GET: Chats/Create
+        // GET: Chatters/Create
         public ActionResult Create()
         {
+            ViewBag.UserNameID = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
-        // POST: Chats/Create
+        // POST: Chatters/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ChatID,ChatMessage,TimeStamp,UserID")] Chat chat)
+        public ActionResult Create([Bind(Include = "ChatterID,ChatMsg,DateStamp,UserNameID")] Chatter chatter)
         {
             if (ModelState.IsValid)
             {
-                db.Chats.Add(chat);
+                db.Chatters.Add(chatter);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(chat);
+            ViewBag.UserNameID = new SelectList(db.AspNetUsers, "Id", "Email", chatter.UserNameID);
+            return View(chatter);
         }
 
-        // GET: Chats/Edit/5
+        // GET: Chatters/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chat chat = db.Chats.Find(id);
-            if (chat == null)
+            Chatter chatter = db.Chatters.Find(id);
+            if (chatter == null)
             {
                 return HttpNotFound();
             }
-            return View(chat);
+            ViewBag.UserNameID = new SelectList(db.AspNetUsers, "Id", "Email", chatter.UserNameID);
+            return View(chatter);
         }
 
-        // POST: Chats/Edit/5
+        // POST: Chatters/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ChatID,ChatMessage,TimeStamp,UserID")] Chat chat)
+        public ActionResult Edit([Bind(Include = "ChatterID,ChatMsg,DateStamp,UserNameID")] Chatter chatter)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(chat).State = EntityState.Modified;
+                db.Entry(chatter).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(chat);
+            ViewBag.UserNameID = new SelectList(db.AspNetUsers, "Id", "Email", chatter.UserNameID);
+            return View(chatter);
         }
 
-        // GET: Chats/Delete/5
+        // GET: Chatters/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chat chat = db.Chats.Find(id);
-            if (chat == null)
+            Chatter chatter = db.Chatters.Find(id);
+            if (chatter == null)
             {
                 return HttpNotFound();
             }
-            return View(chat);
+            return View(chatter);
         }
 
-        // POST: Chats/Delete/5
+        // POST: Chatters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Chat chat = db.Chats.Find(id);
-            db.Chats.Remove(chat);
+            Chatter chatter = db.Chatters.Find(id);
+            db.Chatters.Remove(chatter);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

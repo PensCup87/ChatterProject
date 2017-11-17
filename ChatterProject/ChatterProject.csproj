@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressSSLPort>44348</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -182,14 +182,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ChatsController.cs" />
+    <Compile Include="Controllers\ChattersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Chat.cs">
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>ChatDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>ChatDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>ChatDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>ChatDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChatDB.Context.cs">
@@ -207,8 +216,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChatDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Chatter.cs">
+      <DependentUpon>ChatDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>ChatDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>ChatDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -303,6 +321,11 @@
     <Content Include="Views\Chats\Details.cshtml" />
     <Content Include="Views\Chats\Edit.cshtml" />
     <Content Include="Views\Chats\Index.cshtml" />
+    <Content Include="Views\Chatters\Create.cshtml" />
+    <Content Include="Views\Chatters\Delete.cshtml" />
+    <Content Include="Views\Chatters\Details.cshtml" />
+    <Content Include="Views\Chatters\Edit.cshtml" />
+    <Content Include="Views\Chatters\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
