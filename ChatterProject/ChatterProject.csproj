@@ -316,11 +316,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Chats\Create.cshtml" />
-    <Content Include="Views\Chats\Delete.cshtml" />
-    <Content Include="Views\Chats\Details.cshtml" />
-    <Content Include="Views\Chats\Edit.cshtml" />
-    <Content Include="Views\Chats\Index.cshtml" />
     <Content Include="Views\Chatters\Create.cshtml" />
     <Content Include="Views\Chatters\Delete.cshtml" />
     <Content Include="Views\Chatters\Details.cshtml" />
